@@ -19,7 +19,7 @@ var FACEBOOK_PAGE_ID = '843149412490388';
 var app = express();
 var http = require('http').Server(app);
 
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 5000;
 var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 
@@ -198,6 +198,7 @@ app.get('/api/bot/boafo',function(req,res){
         res.send(challenge);
     }
 });
+
 
 app.post('/api/bot/boafo',function(req,res){
     var senderId = req.body.entry[0].messaging[0].sender.id;
