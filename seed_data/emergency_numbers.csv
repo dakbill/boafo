@@ -1,0 +1,123 @@
+type,tel,areaname,lat,lng
+police,191,Police,0,0
+ambulance,193,Ambulance,0,0
+fire,192,Fire Service,0,0
+disaster,0322034084,Kumasi,6.6666004,-1.6162709
+disaster,0244508351,Accra,5.6037168,-0.1869644
+disaster,0302762593,Accra,5.6037168,-0.1869644
+disaster,0322222145,Mampong Ashati,7.053137,-1.3999969
+disaster,191,gobal,25.977458,90.3336614
+disaster,0312046676,Takoradi,4.9015794,-1.7830973
+disaster,0382023110,Bolgatanga,10.7875419,-0.8579818
+disaster,0202006943,Ho,6.6101493,0.4785495
+disaster,0362027158,Ho,6.6101493,0.4785495
+disaster,0372023154,Tamale,9.432918599999999,-0.8484524
+disaster,0392022657,Wa,47.7510741,-120.7401386
+police,0352027307,Police Clinic Brong-Ahafo Region,7.321462599999999,-2.313641
+police,0352522012,Techiman Police Station Brong-Ahafo Region,7.580618,-1.9426259
+police,0352422209,Wenchi Police Station Brong-Ahafo Region,7.336454499999999,-2.3296351
+disaster,0332132127,Cape Coast,5.13151,-1.2794744
+disaster,0352027271,Sunyani,7.3349414,-2.3123031
+police,0362026203,Ho Central M.T.U. Volta Region,6.61262,0.4693100000000001
+police,0362350595,Kpando Police Station Volta Region,6.9994386,0.3015609
+police,0372022889,Tamale Regional Headquarters Northern Region,9.411679699999999,-0.8250904
+police,0362622259,Keta Police Station Volta Region,5.9013627,0.9883069
+police,0362530215,Aflao Police Station Volta Region,6.121812,1.1848792
+police,0372122039,Walewale Police Station Northern Region,10.3492754,-0.7988584
+police,0372022905,M.T.T.U. Tamale Northern Region,9.432918599999999,-0.8484524
+police,0372222004,Yendi Police Station Northern Region,9.4425267,-0.005173100000000001
+police,0343020627,Akosombo Police Station Eastern Region,6.278878300000001,0.0521448
+police,0342623000,Asamankese Police Station Eastern Region,5.860435799999999,-0.6648934999999999
+police,0342822005,Aburi Police Station Eastern Region,5.855714,-0.1696866
+police,0342022421,Central Police Station Koforidua Eastern Region,6.078764000000001,-0.2544828
+police,0342122014,Nsawam Police Station Eastern Region,5.8106382,-0.3493711
+police,0342122083,Nsawam Police Station Eastern Region,5.8106382,-0.3493711
+police,0342322052,Mpraeso Police Station Eastern Region,6.6344913,-0.7427737000000001
+police,0342522317,Suhum Police Station Eastern Region,6.0375203,-0.4500318
+police,0392022305,Wa Police Station Upper West,10.0630352,-2.4979949
+police,2031202261,Harbor Police Station Upper West,40.796503,-73.967192
+police,0312046122,Charge Office Upper West,40.2397954,-77.36409689999999
+police,0312023132,District Headquarters Upper West,40.7916848,-73.97077019999999
+police,0332132178,District Office Cape Coast Central Region,5.1162367,-1.2436217
+police,0312122259,District Headquarter Upper West,46.56686029999999,-87.41540189999999
+police,0332133846,District Office Saltpond Central Region,5.2013143,-1.058219
+police,2031222049,Harbor Police Station Upper West,40.796503,-73.967192
+police,0332132411,Central Police Station Cape Coast Central Region,5.1129768,-1.2465298
+police,0332132413,M.T.U. Cape Coast Central Region,5.13151,-1.2794744
+police,0244788725,C.I.D. Kasoa Police Office Central Region,5.5326292,-0.432353
+police,0302663563,Crime Office (Accra Reg),5.6317169,-0.1518908
+police,0302773900,Police Headquarter,40.7121911,-74.0016747
+police,0302662386,M.T.U. (Accra Commander),5.586575799999999,-0.1567468
+police,0302228744,Police Depot,40.77372099999999,-73.893611
+police,0302664611,C.I.D. Headquarters,-1.2496029,36.8485744
+police,0302221368,Adabraka Police Station,5.5624068,-0.2137868
+police,0302665561,C.I.D. Headquarters,-1.2496029,36.8485744
+police,0302224840,Kaneshie Police Station,5.5724399,-0.2401124
+police,0302227645,Kaneshie Police Station,5.5724399,-0.2401124
+police,0302666506,Central  C.I.D. Office (Accra),5.571431599999999,-0.1885103
+police,0302663970,Korle-Bu Dist Police Office,5.5374063,-0.2273975
+police,03026633550,Ussher Fort Police Station,5.5386521,-0.2081489
+police,0302662438,Ministry Police Station,41.87798780000001,-87.6559377
+police,0302776571,Cantonment Police Station,31.634403,74.857827
+police,0302664344,Police Striking Force,22.7578117,88.3632913
+police,0302667883,Chorkor Police Station,5.5423268,-0.2271044
+police,0302773900,Police Hospital,7.2796732,80.6821271
+police,0302662517,Central Dist. Office (Accra),5.5911101,-0.2062568
+police,0302500975,Legon Police Station,5.6505328,-0.1792049
+police,0302712060,Kpeshie Nungua Police Station,5.5949618,-0.08841629999999999
+police,0302401999,Achimota Mile 7 Police Station,5.6216057,-0.2184576
+police,0302500322,Madina Police Station,5.677452,-0.1690972
+police,0302400505,Achimota School Police Station,5.6216057,-0.2184576
+police,0302400999,Achimota Mile 7 Police Station,5.6216057,-0.2184576
+police,0302777592,Airport Police Station,33.9483582,-118.3972013
+police,0302224879,Kotobabi Dist Office,5.5993643,-0.1918698
+police,0302664249,Korle-Bu Police Station,5.5423268,-0.2271044
+police,0302303638,Dansoman Police Station,5.5440125,-0.2650267
+police,0302402999,Atomic Police Station,5.6675569,-0.2325526
+police,0302316646,Mamprobi Police Station,5.5423268,-0.2271044
+police,0302301319,Weija Police Station,5.553205,-0.3425503
+police,0302221763,Nima Police Station,5.5736348,-0.2002196
+police,0302221293,Nima Police Station,5.5736348,-0.2002196
+police,0302776150,Osu Police Station,5.552387,-0.1775893
+police,0302662416,James Town Police Station,42.0961665,-79.23810069999999
+police,0302221131,Darkuman Police Station,5.5624068,-0.2137868
+police,0302303067,Odorkor Police Station,5.5773436,-0.2569433
+police,0303202835,Community 1 Police Station Tema,5.6436224,-0.0024357
+police,0302256989,Neoplan Station,5.5696414,-0.2186429
+police,0302222264,Asylum down Police Station,39.2623988,-121.0196014
+police,0302235144,Tesano     Police Station,5.6130777,-0.2237633
+police,0303202510,Community 2 Police Station Tema,5.631723,-0.013111
+police,0303811600,Community 18 Police Station Tema,5.6671596,-0.0108021
+police,0303208722,Kpone Police Station Tema,5.691366599999999,0.05324019999999999
+police,0303202939,Crime Office Tema,25.61055,100.278055
+police,0303204801,Community 4 Police Station Tema,5.6436224,-0.0024357
+police,0303306714,Community 8 Police Station Tema,5.6671596,-0.0108021
+police,0303205502,Fishing Harbor Police Station Tema,5.633333299999999,0.0166667
+police,0303401193,Sakumono Police Station Tema,5.6436224,-0.0024357
+police,0302775525,La Police Station,30.4494089,-91.10606709999999
+police,0303306872,Ashaiman Police Station Tema,5.6877011,-0.0312316
+police,0303208895,Afienya Police Station Tema,5.8018696,0.0063313
+police,0322540207,Central Police Station Obuasi Ashanti Region,6.2001389,-1.6654211
+police,0322029020,Zongo Police Station Kumasi Ashanti Region,6.6953592,-1.6157144
+police,0322024528/22588,Asawasi Police Station Ashanti Region,6.7115886,-1.5969742
+police,0322025216/22850,Suame Police Station Ashanti Region,6.711573200000001,-1.6285497
+police,0322023281,Asokwa Police Station Ashanti Region,6.667639299999999,-1.6046076
+police,0322023723/24939,Manhyia Police Station Ashanti Region,6.713447200000001,-1.6177063
+police,0322025897,Asokwa Police Station Ashanti Region,6.667639299999999,-1.6046076
+police,0322021341,Oforikrom Police Station Ashanti Region,6.688213699999999,-1.5954543
+police,0322022167,Suntreso Police Station Ashanti Region,6.7011068,-1.6435926
+police,0322025111,Railways Police Station Ashanti Region,6.691883,-1.6200573
+police,0322420201,Bekwai Police Station Ashanti Region,6.6801869,-1.6220927
+police,0322420208,Bekwai Police Station Ashanti Region,6.6801869,-1.6220927
+police,0322025441,Regional C. I. D. Office Ashanti Region,6.6920312,-1.6059948
+police,0322024376,B. N. I. Office Ashanti Region,6.935226399999999,-2.3623864
+police,0322222203,Mampong Ashanti Police Station Ashanti Region,7.011091,-1.3832474
+police,0322020196,Ejisu Police Station Ashanti Region,6.7235229,-1.468613
+police,0322222394,District Office Mampong Ashanti Region,7.0778743,-1.4073873
+police,0322322002,District Office Ashanti Region,6.6765345,-1.6312659
+police,0382022304,Bolgatanga Police Station Upper East Region,10.7828505,-0.8502729
+police,0382023003,M.T.U. Office Upper East Region,43.53511590000001,-112.0062147
+police,0382222251,Bawku Police Station Upper East Region,11.0589664,-0.2465301
+police,0382222268,Bawku Police Station Upper East Region,11.0589664,-0.2465301
+police,0382023234,District Office Bolgatanga Upper East Region,10.7969447,-0.8567365
+police,0322222664,Mampong  Nsuta Police Station Ashanti Region,7.011091,-1.3832474

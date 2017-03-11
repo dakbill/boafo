@@ -1,0 +1,19 @@
+{
+  "name": "boafo",
+  "version": "1.0.0",
+  "description": "A personal assistant",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "vive.inc",
+  "license": "ISC",
+  "dependencies": {
+    "@google/maps": "^0.3.1",
+    "body-parser": "^1.17.0",
+    "express": "^4.15.0",
+    "express-session": "^1.15.1",
+    "mongodb": "^2.2.24",
+    "request": "^2.79.0"
+  }
+}
