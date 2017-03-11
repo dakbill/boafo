@@ -200,6 +200,7 @@ app.get('/api/bot/boafo',function(req,res){
 });
 
 
+
 app.post('/api/bot/boafo',function(req,res){
     var senderId = req.body.entry[0].messaging[0].sender.id;
     var text = ((req.body.entry[0].messaging[0].message || {}).quick_reply || {}).payload || (req.body.entry[0].messaging[0].message || {}).text || (req.body.entry[0].messaging[0].postback || {}).payload;
