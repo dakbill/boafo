@@ -7,7 +7,8 @@ var requests = require('request');
 var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 var NumberLong = require('mongodb').Long;
-var mongo_url = "mongodb://localhost:27017/boafo";
+// var mongo_url = "mongodb://localhost:27017/boafo";
+var mongo_url = "mongodb://admin:admin@ds013881.mlab.com:13881/reverse_auction";
 
 var googleMapsClient = require('@google/maps').createClient({
     key: 'AIzaSyBC5jHxodOaUvl0YfsXilCFxexttQO8K3w'
