@@ -19,7 +19,13 @@ var FACEBOOK_PAGE_ID = '843149412490388';
 var app = express();
 var http = require('http').Server(app);
 
-app.set('port', (process.env.PORT || 3000));
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+
+
+
+app.set('port', server_port);
+app.set('ip', server_ip_address);
 app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/static'));
@@ -415,7 +421,7 @@ app.post('/api/bot',function(req,res){
 
 
 
-http.listen(app.get('port'),function () {
+http.listen(app.get('port'),app.get('ip'),function () {
     console.log('Node app is running on port', app.get('port'));
 });
 
