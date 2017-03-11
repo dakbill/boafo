@@ -82,7 +82,7 @@ app.use(function (req, res, next) {
 // });
 
 function distanceApart(latlng1,latlng2) {
-    let distance = Math.sqrt(Math.pow(Number(latlng1.lat) - Number(latlng2.lat),2) + Math.pow(Number(latlng1.long) - Number(latlng2.long),2));
+    var distance = Math.sqrt(Math.pow(Number(latlng1.lat) - Number(latlng2.lat),2) + Math.pow(Number(latlng1.long) - Number(latlng2.long),2));
     return distance;
 }
 
@@ -123,7 +123,7 @@ function sendMessage(recipientId,message,db) {
     },function (error, response, body) {
         if (!error && response.statusCode == 200) {
             console.log(body);
-            let now = new Date().getTime();
+            var now = new Date().getTime();
             db.collection('ChatMessage').insertOne({
                 senderId:FACEBOOK_PAGE_ID,
                 recipientId:recipientId,
@@ -190,8 +190,8 @@ function parseMessage(recipientId,text,callback) {
 
 
 app.get('/api/bot',function(req,res){
-    let token = req.query['hub.verify_token'];
-    let challenge = req.query['hub.challenge'];
+    var token = req.query['hub.verify_token'];
+    var challenge = req.query['hub.challenge'];
 
     if ('boafo_bot' === token) {
         res.send(challenge);
@@ -199,8 +199,8 @@ app.get('/api/bot',function(req,res){
 });
 
 app.post('/api/bot',function(req,res){
-    let senderId = req.body.entry[0].messaging[0].sender.id;
-    let text = ((req.body.entry[0].messaging[0].message || {}).quick_reply || {}).payload || (req.body.entry[0].messaging[0].message || {}).text || (req.body.entry[0].messaging[0].postback || {}).payload;
+    var senderId = req.body.entry[0].messaging[0].sender.id;
+    var text = ((req.body.entry[0].messaging[0].message || {}).quick_reply || {}).payload || (req.body.entry[0].messaging[0].message || {}).text || (req.body.entry[0].messaging[0].postback || {}).payload;
 
     (function (recipientId,text) {
         sendMarkSeen(recipientId);
@@ -219,7 +219,7 @@ app.post('/api/bot',function(req,res){
                 if(!!components && !!(components.result.metadata || {}).intentName && (components.result.metadata || {}).intentName.indexOf('boafo.emergency') > -1){
                     var locationRequest = function (recipientId,db) {
                         sendMessage(recipientId,{
-                            text:`Let me get you nearby help \u{1F3C3} . Share your location`,
+                            text:`var me get you nearby help \u{1F3C3} . Share your location`,
                             quick_replies:[
                                 {content_type:"location"}
                             ]
@@ -238,7 +238,7 @@ app.post('/api/bot',function(req,res){
                     };
                     if(!!components.result.parameters && (!!components.result.parameters.policeSituation || !!components.result.parameters.fireSituation || !!components.result.parameters.ambulanceSituation || !!components.result.parameters.disasterSituation)){
                         var now = new Date().getTime();
-                        let properties = components.result.parameters;
+                        var properties = components.result.parameters;
                         properties.situationType = 'police';
                         if(!!components.result.parameters.fireSituation){
                             properties.situationType = 'fire';
@@ -247,13 +247,13 @@ app.post('/api/bot',function(req,res){
                         }else if(!!components.result.parameters.disasterSituation){
                             properties.situationType = 'disaster';
                         }
-                        let requestProperties = {userId:senderId,properties:components.result.parameters,_created:NumberLong(now), _modified:NumberLong(now)};
+                        var requestProperties = {userId:senderId,properties:components.result.parameters,_created:NumberLong(now), _modified:NumberLong(now)};
                         db.collection('RequestProperties').insertOne(requestProperties,function (err, doc) {
                             locationRequest(senderId,db);
                         });
                     }else if(!!components.result.parameters){
                         var now = new Date().getTime();
-                        let requestProperties = {userId:senderId,properties:components.result.parameters,_created:NumberLong(now), _modified:NumberLong(now)};
+                        var requestProperties = {userId:senderId,properties:components.result.parameters,_created:NumberLong(now), _modified:NumberLong(now)};
                         db.collection('RequestProperties').insertOne(requestProperties,function (err, doc) {
                             situationRequest(senderId,db);
                         });
@@ -301,7 +301,7 @@ app.post('/api/bot',function(req,res){
                     })(senderId,db);
                 }else if(!!components && !! (components.result.metadata || {}).intentName && (components.result.metadata || {}).intentName.indexOf('boafo.psychologist') > -1){
 
-                    let questions = [
+                    var questions = [
                         'What brings you here?','Have you ever seen a counselor before?','What is the problem from your viewpoint?',
                         'How does this problem typically make you feel?','What makes the problem better?','If you could wave a magic wand, what positive changes would you make happen in your life?',
                         'Overall, how would you describe your mood?','What do you expect from the counseling process?','What would it take to make you feel more content, happier and more satisfied?',
@@ -314,11 +314,11 @@ app.post('/api/bot',function(req,res){
                     })(senderId,db);
                 }else{
                     db.collection('ChatMessage').find({senderId:FACEBOOK_PAGE_ID}).sort({'_created':-1}).toArray(function(err,lastBotMessages){
-                        let lastBotMessage = lastBotMessages[0];
+                        var lastBotMessage = lastBotMessages[0];
                         console.log(lastBotMessage.message);
                         if(!!lastBotMessage && lastBotMessage.message.indexOf('Share your location') > -1){
                             db.collection('RequestProperties').find({userId:senderId}).sort({_created:-1}).toArray(function (err, docs) {
-                                let requestProperties = (docs || [])[0] || {};
+                                var requestProperties = (docs || [])[0] || {};
                                 var shareLocationCallback = function (recipientId,emergencyContact,db) {
                                     sendMessage(recipientId,{
                                         attachment:{
@@ -342,8 +342,8 @@ app.post('/api/bot',function(req,res){
                                         address: text
                                     }, function(err, response) {
                                         if (!err) {
-                                            let latlng = response.json.results[0].geometry.location;
-                                            let emergencyType = (requestProperties.properties || {}).situationType || 'police';
+                                            var latlng = response.json.results[0].geometry.location;
+                                            var emergencyType = (requestProperties.properties || {}).situationType || 'police';
                                             latlng.long = latlng.lng;
                                             delete latlng.lng;
 
@@ -351,7 +351,7 @@ app.post('/api/bot',function(req,res){
                                                 docs = (docs||[]).sort(function (a,b) {
                                                     return distanceApart(a.location,latlng) - distanceApart(b.location,latlng);
                                                 });
-                                                let emergencyContact = docs[0] || {};
+                                                var emergencyContact = docs[0] || {};
                                                 console.log('latlng',latlng);
                                                 console.log('emergencyContact',emergencyContact);
                                                 emergencyContact.tel = (emergencyContact.tel || ((requestProperties || {}).properties || {})['phone-number']||911);
@@ -362,13 +362,13 @@ app.post('/api/bot',function(req,res){
                                         }
                                     });
                                 }else{
-                                    let latlng = req.body.entry[0].messaging[0].message.attachments[0].payload.coordinates;
-                                    let emergencyType = (requestProperties.properties || {}).situationType || 'police';
+                                    var latlng = req.body.entry[0].messaging[0].message.attachments[0].payload.coordinates;
+                                    var emergencyType = (requestProperties.properties || {}).situationType || 'police';
                                     db.collection('EmergencyContacts').find({type:emergencyType}).toArray(function (err, docs) {
                                         docs = (docs||[]).sort(function (a,b) {
                                             return distanceApart(a.location,latlng) - distanceApart(b.location,latlng);
                                         });
-                                        let emergencyContact = docs[0] || {};
+                                        var emergencyContact = docs[0] || {};
                                         console.log('latlng',latlng);
                                         emergencyContact.tel = (emergencyContact.tel || ((requestProperties || {}).properties || {})['phone-number']||911);
                                         shareLocationCallback(senderId,emergencyContact,db);
@@ -431,12 +431,12 @@ require('fs').readFile( __dirname +'/seed_data/emergency_numbers.csv', 'utf8', f
         return console.log(err);
     }
     MongoClient.connect(mongo_url,function(err,db){
-        let entries = [];
+        var entries = [];
         data.split('\n').forEach(function (line,index) {
             if(index > 0){
 
-                let columns = line.split(',');
-                let now = new Date().getTime();
+                var columns = line.split(',');
+                var now = new Date().getTime();
 
                 entries.push({
                     type:columns[0],
