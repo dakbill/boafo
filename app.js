@@ -19,13 +19,15 @@ var FACEBOOK_PAGE_ID = '843149412490388';
 var app = express();
 var http = require('http').Server(app);
 
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
+    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
 
 
-app.set('port', server_port);
-app.set('ip', server_ip_address);
+
+
+app.set('port', port);
+app.set('ip', ip);
 app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/static'));
