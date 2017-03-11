@@ -19,7 +19,7 @@ var FACEBOOK_PAGE_ID = '843149412490388';
 var app = express();
 var http = require('http').Server(app);
 
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 5000;
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 
@@ -185,6 +185,10 @@ function parseMessage(recipientId,text,callback) {
         }
     });
 }
+
+app.get('/',function (req, res) {
+    res.send('<h1>Welcome to boafo</h1>');
+});
 
 app.get('/api/ping',function (req, res) {
     res.json({code:0,message:'pong'});
