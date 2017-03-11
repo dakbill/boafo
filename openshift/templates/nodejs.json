@@ -2,21 +2,21 @@
   "kind": "Template",
   "apiVersion": "v1",
   "metadata": {
-    "name": "nodejs-boafo",
+    "name": "boafo",
     "annotations": {
       "openshift.io/display-name": "Boafo",
       "description": "The engine behind an AI bot for emergency situations and basic psychotherapy",
       "tags": "bot,nodejs",
       "iconClass": "icon-nodejs",
       "template.openshift.io/long-description": "This template defines resources needed to develop a NodeJS application, including a build configuration and application deployment configuration.  It does not include a database.",
-      "template.openshift.io/provider-display-name": "Red Hat, Inc.",
-      "template.openshift.io/documentation-url": "https://github.com/openshift/nodejs-ex",
+      "template.openshift.io/provider-display-name": "Vive, Inc.",
+      "template.openshift.io/documentation-url": "https://github.com/dakbill/boafo",
       "template.openshift.io/support-url": "https://access.redhat.com"
     }
   },
   "message": "The following service(s) have been created in your project: ${NAME}.\n\nFor more information about using this template, including OpenShift considerations, see https://github.com/openshift/nodejs-ex/blob/master/README.md.",
   "labels": {
-    "template": "nodejs-boafo"
+    "template": "boafo"
   },
   "objects": [
     {
@@ -149,7 +149,7 @@
             "imageChangeParams": {
               "automatic": true,
               "containerNames": [
-                "nodejs-boafo"
+                "boafo-container"
               ],
               "from": {
                 "kind": "ImageStreamTag",
@@ -175,7 +175,7 @@
           "spec": {
             "containers": [
               {
-                "name": "nodejs-boafo",
+                "name": "boafo-container",
                 "image": " ",
                 "ports": [
                   {
@@ -186,7 +186,7 @@
                   "timeoutSeconds": 3,
                   "initialDelaySeconds": 3,
                   "httpGet": {
-                    "path": "/",
+                    "path": "/api/ping",
                     "port": 8080
                   }
                 },
@@ -194,7 +194,7 @@
                   "timeoutSeconds": 3,
                   "initialDelaySeconds": 30,
                   "httpGet": {
-                    "path": "/",
+                    "path": "/api/ping",
                     "port": 8080
                   }
                 },
@@ -217,7 +217,7 @@
       "displayName": "Name",
       "description": "The name assigned to all of the frontend objects defined in this template.",
       "required": true,
-      "value": "nodejs-boafo"
+      "value": "boafo"
     },
     {
       "name": "NAMESPACE",
