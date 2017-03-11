@@ -126,7 +126,7 @@
           }
         ],
         "postCommit": {
-          "script": "npm test"
+          "script": "npm start"
         }
       }
     },
