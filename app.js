@@ -72,14 +72,12 @@ app.use(function (req, res, next) {
     next();
 });
 
-// app.use(function (req, res, next) {
-//     if(req.path.indexOf('api') == -1 && req.path.indexOf('authenticate') == -1 && req.path.indexOf('/invitation') == -1 && !req.session.user){
-//         var next = (req.get('host').indexOf('heroku') > -1 ?'https':'http')  + '://' + req.get('host') + req.originalUrl;
-//         res.redirect(`/authenticate?next=${new Buffer(next).toString('base64')}`);
-//     }else {
-//         next();
-//     }
-// });
+var googleMapsClient = require('@google/maps').createClient({
+    key: 'AIzaSyBC5jHxodOaUvl0YfsXilCFxexttQO8K3w'
+});
+
+var FACEBOOK_ACCESS_TOKEN = 'EAATuxYTSuxUBAES2nZAXB5ADmDtGDX5axHUrWqtV2bBVjOxBvOIhtCgccTHEBJIXSYqieZBXk99Q75qxA0dYy6vR7nmvkijMw9GW89OFZCPydCIhRqXIIRQdp3LavrZCd73NGOjQHrxKi62crI924CobbTj95zQme4ZAztU6IKQZDZD';
+var FACEBOOK_PAGE_ID = '843149412490388';
 
 function distanceApart(latlng1,latlng2) {
     var distance = Math.sqrt(Math.pow(Number(latlng1.lat) - Number(latlng2.lat),2) + Math.pow(Number(latlng1.long) - Number(latlng2.long),2));
@@ -188,8 +186,11 @@ function parseMessage(recipientId,text,callback) {
     });
 }
 
+app.get('/api/ping',function (req, res) {
+    res.json({code:0,message:'pong'});
+});
 
-app.get('/api/bot',function(req,res){
+app.get('/api/bot/boafo',function(req,res){
     var token = req.query['hub.verify_token'];
     var challenge = req.query['hub.challenge'];
 
@@ -198,7 +199,7 @@ app.get('/api/bot',function(req,res){
     }
 });
 
-app.post('/api/bot',function(req,res){
+app.post('/api/bot/boafo',function(req,res){
     var senderId = req.body.entry[0].messaging[0].sender.id;
     var text = ((req.body.entry[0].messaging[0].message || {}).quick_reply || {}).payload || (req.body.entry[0].messaging[0].message || {}).text || (req.body.entry[0].messaging[0].postback || {}).payload;
 
@@ -219,20 +220,21 @@ app.post('/api/bot',function(req,res){
                 if(!!components && !!(components.result.metadata || {}).intentName && (components.result.metadata || {}).intentName.indexOf('boafo.emergency') > -1){
                     var locationRequest = function (recipientId,db) {
                         sendMessage(recipientId,{
-                            text:`var me get you nearby help \u{1F3C3} . Share your location`,
+                            text:`var me get you nearby help \u{1F3C3} . Send or Type in your location`,
                             quick_replies:[
                                 {content_type:"location"}
                             ]
                         },db);
                     };
                     var situationRequest = function (recipientId,db) {
+                        var baseUrl = ((req.get('host').indexOf('heroku') > -1 ?'https':'http')  + '://' + req.get('host'));
                         sendMessage(recipientId,{
-                            text:'Whats your emergency?',
+                            text:'What\'s your emergency?',
                             quick_replies:[
-                                {content_type:'text',title:'Police',payload:'help me call the police'},
-                                {content_type:'text',title:'Fire',payload:'help me call the fireservice'},
-                                {content_type:'text',title:'Ambulance',payload:'help me call an ambulance'},
-                                {content_type:'text',title:'Disaster',payload:'help me call the disaster management'}
+                                {content_type:'text',title:'Police',payload:'help me call the police',image_url:`${baseUrl}/images/police-icon.png`},
+                                {content_type:'text',title:'Fire',payload:'help me call the fireservice',image_url:`${baseUrl}/images/fire-truck-icon.png`},
+                                {content_type:'text',title:'Ambulance',payload:'help me call an ambulance',image_url:`${baseUrl}/images/ambulance-icon.png`},
+                                {content_type:'text',title:'Disaster',payload:'help me call the disaster management',image_url:`${baseUrl}/images/disaster-icon.png`}
                             ]
                         },db);
                     };
@@ -316,7 +318,7 @@ app.post('/api/bot',function(req,res){
                     db.collection('ChatMessage').find({senderId:FACEBOOK_PAGE_ID}).sort({'_created':-1}).toArray(function(err,lastBotMessages){
                         var lastBotMessage = lastBotMessages[0];
                         console.log(lastBotMessage.message);
-                        if(!!lastBotMessage && lastBotMessage.message.indexOf('Share your location') > -1){
+                        if(!!lastBotMessage && lastBotMessage.message.indexOf('Send or Type in your location') > -1){
                             db.collection('RequestProperties').find({userId:senderId}).sort({_created:-1}).toArray(function (err, docs) {
                                 var requestProperties = (docs || [])[0] || {};
                                 var shareLocationCallback = function (recipientId,emergencyContact,db) {
@@ -380,18 +382,18 @@ app.post('/api/bot',function(req,res){
                             (function (recipientId,text,db) {
                                 getUserProfile(recipientId,function (user) {
                                     sendMessage(recipientId,{
-                                        text: `Hello ${user.first_name} ${'\u{263A}'}! \n\nI can help you with emergencies or psychotherapy. If you need help just enter help.!`
+                                        text: `Hello ${user.first_name} ${'\u{263A}'}! \n\nI can help you with emergencies or basic psychotherapy. Type help whenever you need help!`
                                     },db);
                                 })
                             })(senderId,text,db);
-                        }else if(!!text && text.toLowerCase() == 'help'){
+                        }else if(!!text && text.toLowerCase().trim() == 'help'){
                             (function (recipientId,text,db) {
                                 getUserProfile(recipientId,function (user) {
                                     sendMessage(recipientId,{
                                         text: `How may I help you?`,
                                         quick_replies:[
                                             {content_type:'text',title:'Emergency',payload:'help me call 911'},
-                                            {content_type:'text',title:'Counsel',payload:'I need a psychologist'},
+                                            {content_type:'text',title:'Basic psychotherapy',payload:'I need a psychologist'},
                                         ]
                                     },db);
                                 })
@@ -417,7 +419,6 @@ app.post('/api/bot',function(req,res){
 
     res.send('');
 });
-
 
 
 
@@ -461,4 +462,9 @@ require('fs').readFile( __dirname +'/seed_data/emergency_numbers.csv', 'utf8', f
     })
 
 });
+
+
+
+
+
 
