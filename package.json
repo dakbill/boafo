@@ -4,6 +4,7 @@
   "description": "A personal assistant",
   "main": "app.js",
   "scripts": {
+    "test": "node test/testrunner.js",
     "start": "node app.js"
   },
   "author": "vive.inc",
@@ -14,6 +15,7 @@
     "express": "^4.15.0",
     "express-session": "^1.15.1",
     "mongodb": "^2.2.24",
-    "request": "^2.79.0"
+    "request": "^2.79.0",
+    "tap": "^10.3.0"
   }
 }

@@ -125,7 +125,9 @@
             }
           }
         ],
-        "postCommit": {}
+        "postCommit": {
+          "script":"npm test"
+        }
       }
     },
     {
