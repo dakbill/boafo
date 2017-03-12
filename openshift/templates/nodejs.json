@@ -125,9 +125,7 @@
             }
           }
         ],
-        "postCommit": {
-          "script": "npm start"
-        }
+        "postCommit": {}
       }
     },
     {
