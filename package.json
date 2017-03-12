@@ -17,5 +17,9 @@
     "mongodb": "^2.2.24",
     "request": "^2.79.0",
     "tap": "^10.3.0"
+  },"repository": {
+    "type": "git",
+    "url": "git://github.com/dakbill/boafo.git"
   }
 }
+
