@@ -2,7 +2,7 @@
   "kind": "Template",
   "apiVersion": "v1",
   "metadata": {
-    "name": "boafo",
+    "name": "node-boafo",
     "annotations": {
       "openshift.io/display-name": "Boafo",
       "description": "The engine behind an AI bot for emergency situations and basic psychotherapy",
@@ -217,7 +217,7 @@
       "displayName": "Name",
       "description": "The name assigned to all of the frontend objects defined in this template.",
       "required": true,
-      "value": "boafo"
+      "value": "node-boafo"
     },
     {
       "name": "NAMESPACE",
